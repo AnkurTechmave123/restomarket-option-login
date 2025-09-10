@@ -85,9 +85,17 @@ $(document).ready(function() {
 function showStep(step) {
     console.log(`Navigating to step: ${step}`);
     $('.forgot-step').removeClass('active');
+    
+    // Hide all steps first
+    $('#step-email').hide();
+    $('#step-otp').hide();
+    $('#step-password').hide();
+    $('#step-success').hide();
+    
+    // Show the requested step
     const stepElement = $(`#step-${step}`);
     if (stepElement.length) {
-        stepElement.addClass('active');
+        stepElement.show().addClass('active');
         
         // Update current step based on step name
         const stepMap = {
@@ -98,7 +106,7 @@ function showStep(step) {
         };
         currentStep = stepMap[step] || 1;
         
-        console.log(`Current step updated to: ${currentStep}`);
+        console.log(`Current step updated to: ${currentStep}, showing: #step-${step}`);
     } else {
         console.error(`Step element not found: #step-${step}`);
     }
@@ -127,6 +135,7 @@ function sendOTP(email, isResend = false) {
         submitBtn.text(originalText).prop('disabled', false);
         
         // Show OTP step and start timer
+        console.log('About to show OTP step');
         showStep('otp');
         startResendTimer();
         
@@ -135,6 +144,8 @@ function sendOTP(email, isResend = false) {
         } else {
             showSuccess('OTP resent successfully');
         }
+        
+        console.log('OTP step should now be visible');
     }, 2000);
 }
 

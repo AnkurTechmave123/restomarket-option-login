@@ -22,7 +22,7 @@
                 </div>
 
                 <!-- Step 1: Email Entry -->
-                <div id="step-email" class="forgot-step active">
+                <div id="step-email" class="forgot-step active" style="display: block;">
                     <div class="welcome-section">
                         <h1>Forgot Password</h1>
                         <p>Enter your email address to receive an OTP</p>
@@ -47,7 +47,7 @@
                 </div>
 
                 <!-- Step 2: OTP Verification -->
-                <div id="step-otp" class="forgot-step">
+                <div id="step-otp" class="forgot-step" style="display: none;">
                     <div class="welcome-section">
                         <h1>Verify OTP</h1>
                         <p>Enter the 6-digit code sent to your email</p>
@@ -76,7 +76,7 @@
                 </div>
 
                 <!-- Step 3: New Password -->
-                <div id="step-password" class="forgot-step">
+                <div id="step-password" class="forgot-step" style="display: none;">
                     <div class="welcome-section">
                         <h1>Reset Password</h1>
                         <p>Create a new password for your account</p>
@@ -129,7 +129,7 @@
                 </div>
 
                 <!-- Step 4: Success -->
-                <div id="step-success" class="forgot-step">
+                <div id="step-success" class="forgot-step" style="display: none;">
                     <div class="success-section">
                         <div class="success-icon">
                             <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
