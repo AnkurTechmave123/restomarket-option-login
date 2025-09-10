@@ -566,3 +566,273 @@ body {
 .form-group input:valid:not(:placeholder-shown) {
     border-color: #10b981;
 }
+
+/* Forgot Password Styles */
+.forgot-step {
+    display: none;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.forgot-step.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.forgot-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.forgot-btn {
+    background: linear-gradient(135deg, #FF9800, #F57C00);
+}
+
+.forgot-btn:hover {
+    background: linear-gradient(135deg, #F57C00, #E65100);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 152, 0, 0.4);
+}
+
+.email-display {
+    background: #f8fafc;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    margin-top: 0.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.email-display span {
+    font-weight: 500;
+    color: #4f46e5;
+    font-size: 0.875rem;
+}
+
+/* OTP Input Styles */
+.otp-container {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    margin: 1rem 0;
+}
+
+.otp-input {
+    width: 3rem !important;
+    height: 3rem;
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 600;
+    border: 2px solid #d1d5db;
+    border-radius: 8px;
+    background: white;
+    transition: all 0.3s ease;
+    padding: 0 !important;
+}
+
+.otp-input:focus {
+    border-color: #FF9800;
+    box-shadow: 0 0 0 3px rgb(255 152 0 / 10%);
+    outline: none;
+}
+
+.otp-input:valid {
+    border-color: #10b981;
+    background: #f0fdf4;
+}
+
+.resend-section {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.resend-section p {
+    color: #6b7280;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+}
+
+.resend-section a {
+    color: #4f46e5;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.resend-section a:hover:not(.disabled) {
+    color: #4338ca;
+}
+
+.resend-section a.disabled {
+    color: #9ca3af;
+    cursor: not-allowed;
+}
+
+.timer {
+    color: #6b7280;
+    font-size: 0.875rem;
+    display: none;
+}
+
+/* Password Strength Indicator */
+.password-strength {
+    margin-top: 0.5rem;
+}
+
+.strength-bar {
+    width: 100%;
+    height: 4px;
+    background: #e5e7eb;
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.strength-fill {
+    height: 100%;
+    width: 0%;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+.strength-text {
+    font-size: 0.75rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.password-match {
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    display: none;
+}
+
+/* Success Section */
+.success-section {
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.success-icon {
+    margin: 0 auto 1.5rem;
+    width: fit-content;
+    animation: successPulse 0.6s ease-out;
+}
+
+@keyframes successPulse {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.success-section h1 {
+    color: #10b981;
+    margin-bottom: 1rem;
+}
+
+.success-section p {
+    color: #6b7280;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+/* Toast Notifications */
+.toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+    border-radius: 8px;
+    color: white;
+    font-weight: 500;
+    font-size: 0.875rem;
+    box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    transform: translateX(100%);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+    max-width: 400px;
+}
+
+.toast.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.toast-success {
+    background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.toast-error {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+.toast-icon {
+    flex-shrink: 0;
+}
+
+/* Forgot Password Link */
+.forgot-password-link {
+    text-align: center;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #f3f4f6;
+}
+
+.forgot-password-link a {
+    color: #4f46e5;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.forgot-password-link a:hover {
+    color: #4338ca;
+}
+
+/* Responsive Design for Forgot Password */
+@media (max-width: 640px) {
+    .otp-container {
+        gap: 0.5rem;
+    }
+    
+    .otp-input {
+        width: 2.5rem !important;
+        height: 2.5rem;
+        font-size: 1rem;
+    }
+    
+    .toast {
+        right: 10px;
+        left: 10px;
+        max-width: none;
+        transform: translateY(-100%);
+    }
+    
+    .toast.show {
+        transform: translateY(0);
+    }
+}

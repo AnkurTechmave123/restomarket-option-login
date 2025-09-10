@@ -65,7 +65,9 @@
                     <button type="submit" class="login-btn super-admin-btn">Sign In</button>
                 </form>
 
-               
+                <div class="forgot-password-link">
+                    <a href="forgot-password.php?type=supplier">Forgot Password?</a>
+                </div>
             </div>
         </div>
     </div>
