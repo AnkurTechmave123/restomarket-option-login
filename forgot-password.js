@@ -22,7 +22,10 @@ $(document).ready(function() {
         
         if (validateEmail(email)) {
             userEmail = email;
+            console.log(`Email validated: ${email}`);
             sendOTP(email);
+        } else {
+            showError('Please enter a valid email address');
         }
     });
     
@@ -30,6 +33,7 @@ $(document).ready(function() {
     $('#otp-form').on('submit', function(e) {
         e.preventDefault();
         const otp = getOTPValue();
+        console.log(`OTP entered: ${otp}`);
         
         if (otp.length === 6) {
             verifyOTP(otp);
@@ -43,6 +47,7 @@ $(document).ready(function() {
         e.preventDefault();
         const newPassword = $('#new-password').val();
         const confirmPassword = $('#confirm-password').val();
+        console.log('Password form submitted');
         
         if (validatePasswords(newPassword, confirmPassword)) {
             resetPassword(newPassword);
@@ -78,9 +83,25 @@ $(document).ready(function() {
 
 // Step navigation
 function showStep(step) {
+    console.log(`Navigating to step: ${step}`);
     $('.forgot-step').removeClass('active');
-    $(`#step-${step}`).addClass('active');
-    currentStep = step;
+    const stepElement = $(`#step-${step}`);
+    if (stepElement.length) {
+        stepElement.addClass('active');
+        
+        // Update current step based on step name
+        const stepMap = {
+            'email': 1,
+            'otp': 2,
+            'password': 3,
+            'success': 4
+        };
+        currentStep = stepMap[step] || 1;
+        
+        console.log(`Current step updated to: ${currentStep}`);
+    } else {
+        console.error(`Step element not found: #step-${step}`);
+    }
 }
 
 // Email validation
@@ -102,10 +123,12 @@ function sendOTP(email, isResend = false) {
         console.log(`Sending OTP to: ${email} for user type: ${userType}`);
         
         $('#display-email').text(email);
-        showStep('otp');
-        startResendTimer();
         
         submitBtn.text(originalText).prop('disabled', false);
+        
+        // Show OTP step and start timer
+        showStep('otp');
+        startResendTimer();
         
         if (!isResend) {
             showSuccess('OTP sent successfully to your email');
@@ -185,9 +208,11 @@ function verifyOTP(otp) {
         console.log(`Verifying OTP: ${otp} for email: ${userEmail}`);
         
         // Simulate successful verification (in real app, check with server)
-        if (otp === '123456' || otp.length === 6) {
-            showStep('password');
+        if (otp.length === 6) {
+            // Clear resend timer first
             clearResendTimer();
+            // Show password reset step
+            showStep('password');
             showSuccess('OTP verified successfully');
         } else {
             showError('Invalid OTP. Please try again.');
@@ -315,6 +340,7 @@ function resetPassword(newPassword) {
         // In real implementation, make API call here
         console.log(`Resetting password for: ${userEmail} (${userType})`);
         
+        // Show success step
         showStep('success');
         submitBtn.text(originalText).prop('disabled', false);
     }, 2000);
